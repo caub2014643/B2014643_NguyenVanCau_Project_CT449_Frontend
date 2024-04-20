@@ -17,7 +17,7 @@ export default {
         </div>
         <div class="p-1">
             <strong>Đơn giá:</strong>
-            {{ book.dongia }}
+            {{ book.dongia }} VND
         </div>
         <div class="p-1">
             <strong>Số quyển:</strong>

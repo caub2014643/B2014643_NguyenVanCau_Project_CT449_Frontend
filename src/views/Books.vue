@@ -8,8 +8,7 @@
                 Sách
                 <i class="fas fa-address-book"></i>
             </h4>
-            <BookList v-if="filteredBooksCount > 0" :books="filteredBooks"
-                v-model:activeIndex="activeIndex" />
+            <BookList v-if="filteredBooksCount > 0" :books="filteredBooks" v-model:activeIndex="activeIndex" />
             <p v-else>Không có sách nào.</p>
             <div class="mt-3 row justify-content-around align-items-center">
                 <button class="btn btn-sm btn-primary" @click="refreshList()">
@@ -30,6 +29,13 @@
                     <i class="fas fa-address-card"></i>
                 </h4>
                 <BookCard :book="activeBook" />
+                <router-link :to="{
+                    name: 'book.edit',
+                    params: { id: activeBook._id },
+                }">
+                    <span class="mt-2 badge badge-warning">
+                        <i class="fas fa-edit"></i> Hiệu chỉnh</span>
+                </router-link>
             </div>
         </div>
     </div>
