@@ -1,10 +1,16 @@
 import { createWebHistory, createRouter } from "vue-router";
 import Books from "@/views/Books.vue";
+import nxb from "@/views/Nxbs.vue";
 const routes = [
   {
-    path: "/",
+    path: "/books",
     name: "bookmanager",
     component: Books,
+  },
+  {
+    path: "/nhaxuatban",
+    name: "nxbmanager",
+    component: nxb,
   },
   {
     path: "/:pathMatch(.*)*",
@@ -18,11 +24,24 @@ const routes = [
     props: true, // Truyền các biến trong $route.params vào làm props
   },
   {
-    path: "/books/",
+    path: "/books/add",
     name: "book.add",
     component: () => import("@/views/BookAdd.vue"),
     props: true, // Truyền các biến trong $route.params vào làm props
   },
+  {
+    path: "/nhaxuatban/:id",
+    name: "nhaxuatban.edit",
+    component: () => import("@/views/NxbEdit.vue"),
+    props: true, // Truyền các biến trong $route.params vào làm props
+  },
+  {
+    path: "/nhaxuatban/add",
+    name: "nhaxuatban.add",
+    component: () => import("@/views/NxbAdd.vue"),
+    props: true, // Truyền các biến trong $route.params vào làm props
+  },
+  
 ];
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
