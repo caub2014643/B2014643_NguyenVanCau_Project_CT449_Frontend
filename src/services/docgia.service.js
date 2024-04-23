@@ -19,7 +19,7 @@ class DocgiaService {
     return (await this.api.put(`/${id}`, data)).data;
   }
   async login(madocgia, dienthoai) {
-    return (await this.api.post("/login", { madocgia, dienthoai }));
+    return (await this.api.post("login", { madocgia, dienthoai }));
   }
 }
 export default new DocgiaService();

@@ -45,14 +45,14 @@ export default {
         const nhaxuatbanFormSchema = yup.object().shape({
             manxb: yup
                 .string()
-                .matches(/^nxb[0-9]{3}$/, "Mã sách phải bắt đầu bằng 'nxb' và theo sau là 3 chữ số.")
+                .matches(/^nxb[0-9]{3}$/, "Mã nhà xuất bản phải bắt đầu bằng 'nxb' và theo sau là 3 chữ số.")
                 .required("Mã nhà xuất bản phải bắt đầu bằng nxb (Ví dụ nxb001).")
                 .min(6, "Mã sách phải có 6 ký tự.")
                 .max(6, "Mã sách phải có 6 ký tự."),
             tennxb: yup
                 .string()
                 .required("Tên nhà xuất bản phải có giá trị.")
-                .min(3, "Tên sách phải có ít nhất 3 ký tự.")
+                .min(3, "Tên nhà xuất bản phải có ít nhất 3 ký tự.")
                 .max(100, "Tên nhà xuất bản có tối đa 100 ký tự."),
             diachi: yup.string().max(100, "Địa chỉ tối đa 100 ký tự."),
 

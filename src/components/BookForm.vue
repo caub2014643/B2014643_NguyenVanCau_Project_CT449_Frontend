@@ -29,7 +29,7 @@
 
         <div class="form-group">
             <label for="manxb">Mã nhà xuất bản</label>
-            <Field name="manxb" type="text" class="form-control" placeholder="Nhập vào mã nhà xuát bản của sách" v-model="bookLocal.manxb" />
+            <Field name="manxb" type="text" class="form-control" placeholder="Nhập vào mã nhà xuất bản của sách" v-model="bookLocal.manxb" />
             <ErrorMessage name="manxb" class="error-feedback" />
         </div>
 
