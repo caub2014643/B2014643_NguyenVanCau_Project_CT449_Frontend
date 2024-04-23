@@ -11,8 +11,7 @@ export default {
 </script>
 <template>
   <div id="app">
-    <AppHeader  />
-    <AppHeader2  />
+    <router-view name="header" />
     <div class="container mt-3">
       <router-view />
     </div>

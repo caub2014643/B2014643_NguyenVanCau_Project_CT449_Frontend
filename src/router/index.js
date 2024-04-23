@@ -4,6 +4,13 @@ import nxb from "@/views/Nxbs.vue";
 import nhanvien from "@/views/nhanvien.vue";
 import BookView from "@/views/BookView.vue";
 import DangnhapDG from "@/views/Docgia.vue";
+import Dangky from "@/views/DocGiaAdd.vue";
+import Home from "@/views/Home.vue";
+
+import AppHeader from "@/components/AppHeader.vue";
+import AppHeader2 from "@/components/AppHeader2.vue";
+import AppHeader3 from "@/components/AppHeader3.vue";
+import AppHeader4 from "@/components/AppHeader4.vue";
 const requireAuth = (to, from, next) => {
   // Kiểm tra xem người dùng đã đăng nhập hay chưa
   const loggedInUser = localStorage.getItem('loggedInUser');
@@ -16,34 +23,78 @@ const requireAuth = (to, from, next) => {
   }
 };
 
+const requireReader = (to, from, next) => {
+  // Kiểm tra xem người dùng đã đăng nhập hay chưa
+  const loggedInReader = localStorage.getItem('loggedInReader');
+  if (!loggedInReader) {
+    // Nếu chưa đăng nhập, chuyển hướng đến trang đăng nhập
+    next({ name: 'dangnhap' });
+  } else {
+    // Nếu đã đăng nhập, cho phép truy cập vào route tiếp theo
+    next();
+  }
+};
+
 const routes = [
   {
     path: "/nhanvien/books",
     name: "bookmanager",
-    component: Books,
+    components: {
+      default: Books,
+      header: AppHeader 
+    },
     beforeEnter: requireAuth
   },
   {
     path: "/nhanvien/",
     name: "manager",
-    component: nhanvien,
+    components: {
+      default: nhanvien,
+      header: AppHeader3 
+    }
 
   },
   {
     path: "/dangnhap",
     name: "dangnhap",
-    component: DangnhapDG,
+    components: {
+      default: DangnhapDG,
+      header: AppHeader2 
+    }
 
   },
   {
-    path: "/",
+    path: "/docgia",
     name: "docgia",
-    component: BookView,
+    components: {
+      default: BookView,
+      header: AppHeader4 
+    },
+    beforeEnter: requireReader
+  },
+  {
+    path: "/",
+    name: "home",
+    components: {
+      default: Home,
+      header: AppHeader2 
+    }
+  },
+  {
+    path: "/dangky",
+    name: "dangky",
+    components: {
+      default: Dangky,
+      header: AppHeader2 
+    }
   },
   {
     path: "/nhanvien/nhaxuatban",
     name: "nxbmanager",
-    component: nxb,
+    components: {
+      default: nxb,
+      header: AppHeader 
+    },
     beforeEnter: requireAuth
   },
   {
@@ -55,28 +106,40 @@ const routes = [
   {
     path: "/nhanvien/books/:id",
     name: "book.edit",
-    component: () => import("@/views/BookEdit.vue"),
+    components: {
+      default: () => import("@/views/BookEdit.vue"),
+      header: AppHeader 
+    },
     props: true, // Truyền các biến trong $route.params vào làm props
     beforeEnter: requireAuth
   },
   {
     path: "/nhanvien/books/add",
     name: "book.add",
-    component: () => import("@/views/BookAdd.vue"),
+    components: {
+      default: () => import("@/views/BookAdd.vue"),
+      header: AppHeader 
+    },
     props: true, // Truyền các biến trong $route.params vào làm props
     beforeEnter: requireAuth
   },
   {
     path: "/nhanvien/nhaxuatban/:id",
     name: "nhaxuatban.edit",
-    component: () => import("@/views/NxbEdit.vue"),
+    components: {
+      default: () => import("@/views/NxbEdit.vue"),
+      header: AppHeader 
+    },
     props: true, // Truyền các biến trong $route.params vào làm props
     beforeEnter: requireAuth
   },
   {
     path: "/nhanvien/nhaxuatban/add",
     name: "nhaxuatban.add",
-    component: () => import("@/views/NxbAdd.vue"),
+    components: {
+      default: () => import("@/views/NxbAdd.vue"),
+      header: AppHeader 
+    },
     props: true, // Truyền các biến trong $route.params vào làm props
     beforeEnter: requireAuth
   },
