@@ -26,12 +26,12 @@ export default {
       try {
                 const response = await NhanvienService.login(nhanvien.sodienthoai, nhanvien.password);
                 if (response) {
-                    alert("Đăng nhập thành công");
+                  alert(`Đăng nhập thành công`);
                     // Trong hàm login của controller sau khi xác thực thành công
                     const { nhanVien } = response; // Kết quả từ hàm login của service
                     localStorage.setItem('loggedInUser', JSON.stringify(nhanVien));
                     //const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
-
+                    
                     this.$router.push({ name: "nxbmanager" });
                 } else {
                   //this.$router.push({ name: "nxbmanager" });

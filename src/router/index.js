@@ -6,6 +6,7 @@ import BookView from "@/views/BookView.vue";
 import DangnhapDG from "@/views/Docgia.vue";
 import Dangky from "@/views/DocGiaAdd.vue";
 import Home from "@/views/Home.vue";
+import Muonsach from "@/views/Muonsach.vue";
 
 import AppHeader from "@/components/AppHeader.vue";
 import AppHeader2 from "@/components/AppHeader2.vue";
@@ -68,6 +69,15 @@ const routes = [
     name: "docgia",
     components: {
       default: BookView,
+      header: AppHeader4 
+    },
+    beforeEnter: requireReader
+  },
+  {
+    path: "/muonsach",
+    name: "muonsach",
+    components: {
+      default: Muonsach,
       header: AppHeader4 
     },
     beforeEnter: requireReader

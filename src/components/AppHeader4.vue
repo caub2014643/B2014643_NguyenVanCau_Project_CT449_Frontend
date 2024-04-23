@@ -8,7 +8,7 @@
                 </router-link>
             </div>
             <div class="nav-item">
-                <router-link :to="{ name: 'docgia' }" class="nav-link">
+                <router-link :to="{ name: 'muonsach' }" class="nav-link">
                     Sách đã mượn <i class="fas fa-history"></i>
                 </router-link>
             </div>

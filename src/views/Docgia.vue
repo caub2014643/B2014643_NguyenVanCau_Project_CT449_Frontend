@@ -26,11 +26,11 @@ export default {
       try {
                 const response = await DocgiaService.login(docgia.madocgia, docgia.dienthoai);
                 if (response) {
-                    alert("Đăng nhập thành công");
+                  alert(`Đăng nhập thành công`);
                     // Trong hàm login của controller sau khi xác thực thành công
                     const { docGia } = response; // Kết quả từ hàm login của service
                     localStorage.setItem('loggedInReader', JSON.stringify(docGia));
-
+                    
                     this.$router.push({ name: "docgia" });
                 } else {
                   //this.$router.push({ name: "docgia" });
